@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "devtoolkit-linux"
+version = "0.1.0"
+description = "Kit modular de automacao para desenvolvimento no Linux Mint"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+web = ["fastapi>=0.115.0,<1.0.0", "uvicorn[standard]>=0.30.0,<1.0.0"]
+
+[project.scripts]
+devtoolkit = "devtoolkit.cli:main"
+
+[tool.setuptools.package-data]
+devtoolkit = ["web/*"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
